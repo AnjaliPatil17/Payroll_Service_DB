@@ -110,4 +110,22 @@ mysql> INSERT INTO employee_payroll (name,salary,start_date) VALUES
 Query OK, 5 rows affected (0.01 sec)
 Records: 5  Duplicates: 0  Warnings: 0
 
-mysql>
+
+
+-------------------------------------------------------------------------------------------------
+      UC4 - Ability to retrieve all the employee payroll data in payroll service database
+-------------------------------------------------------------------------------------------------
+
+
+mysql>  SELECT * FROM employee_payroll;
++-------------+---------+--------+------------+
+| employee_id | name    | salary | start_date |
++-------------+---------+--------+------------+
+|           1 | Anjali  |  32000 | 2024-01-05 |
+|           2 | Sakshi  |  33000 | 2023-07-28 |
+|           3 | Sanvi   |  35000 | 2024-02-10 |
+|           4 | Tushar  |  28000 | 2024-01-15 |
+|           5 | Swpnail |  31000 | 2024-03-17 |
++-------------+---------+--------+------------+
+5 rows in set (0.00 sec)
+
