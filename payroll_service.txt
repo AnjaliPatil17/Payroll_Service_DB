@@ -1,5 +1,5 @@
  
---------UC1 - Ability to create payroll service database------
+-------- UC1 - Ability to create payroll service database ------------
 
 Enter password: ********
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -47,3 +47,26 @@ mysql> show databases;
 mysql> use payroll_service;
 Database changed
 mysql>
+
+
+
+--------- UC2 - Ability to create employee payroll table ------------
+
+mysql> CREATE TABLE employee_payroll(
+    -> employee_id INT NOT NULL AUTO_INCREMENT,
+    -> name VARCHAR(255) NOT NULL,
+    -> salary DOUBLE NOT NULL,
+    -> start_date DATE NOT NULL,
+    -> PRIMARY KEY (employee_id));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> DESCRIBE employee_payroll;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| employee_id | int          | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(255) | NO   |     | NULL    |                |
+| salary      | double       | NO   |     | NULL    |                |
+| start_date  | date         | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
