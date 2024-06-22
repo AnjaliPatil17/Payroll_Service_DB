@@ -313,3 +313,42 @@ mysql> SELECT COUNT(salary) FROM employee_payroll WHERE gender = 'F' GROUP BY ge
 |             3 |
 +---------------+
 1 row in set (0.00 sec)
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+     UC8 - Ability to extend employee payroll data to store employee information like employee phone, address, department
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+mysql> ALTER TABLE employee_payroll ADD (phone_no INT,Address VARCHAR(255) DEFAULT 'MUMBAI', Departmetment VARCHAR(255) NOT NULL );
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE employee_payroll;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| employee_id   | int          | NO   | PRI | NULL    | auto_increment |
+| name          | varchar(255) | NO   |     | NULL    |                |
+| gender        | varchar(255) | YES  |     | NULL    |                |
+| salary        | double       | NO   |     | NULL    |                |
+| start_date    | date         | NO   |     | NULL    |                |
+| phone_no      | int          | YES  |     | NULL    |                |
+| Address       | varchar(255) | YES  |     | MUMBAI  |                |
+| Departmetment | varchar(255) | NO   |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM employee_payroll;
++-------------+---------+--------+--------+------------+----------+---------+---------------+
+| employee_id | name    | gender | salary | start_date | phone_no | Address | Departmetment |
++-------------+---------+--------+--------+------------+----------+---------+---------------+
+|           1 | Anjali  | F      |  32000 | 2024-01-05 |     NULL | MUMBAI  |               |
+|           2 | Sakshi  | F      |  33000 | 2023-07-28 |     NULL | MUMBAI  |               |
+|           3 | Sanvi   | F      |  35000 | 2024-02-10 |     NULL | MUMBAI  |               |
+|           4 | Tushar  | M      |  28000 | 2024-01-15 |     NULL | MUMBAI  |               |
+|           5 | Swpnail | M      |  31000 | 2024-03-17 |     NULL | MUMBAI  |               |
++-------------+---------+--------+--------+------------+----------+---------+---------------+
+5 rows in set (0.00 sec)
