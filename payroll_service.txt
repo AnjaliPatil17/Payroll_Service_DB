@@ -322,7 +322,7 @@ mysql> SELECT COUNT(salary) FROM employee_payroll WHERE gender = 'F' GROUP BY ge
 
 
 
-mysql> ALTER TABLE employee_payroll ADD (phone_no INT,Address VARCHAR(255) DEFAULT 'MUMBAI', Departmetment VARCHAR(255) NOT NULL );
+mysql> ALTER TABLE employee_payroll ADD (phone_no INT,Address VARCHAR(255) DEFAULT 'MUMBAI', Department VARCHAR(255) NOT NULL );
 Query OK, 0 rows affected (0.02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
@@ -337,13 +337,13 @@ mysql> DESCRIBE employee_payroll;
 | start_date    | date         | NO   |     | NULL    |                |
 | phone_no      | int          | YES  |     | NULL    |                |
 | Address       | varchar(255) | YES  |     | MUMBAI  |                |
-| Departmetment | varchar(255) | NO   |     | NULL    |                |
+| Department    | varchar(255) | NO   |     | NULL    |                |
 +---------------+--------------+------+-----+---------+----------------+
 8 rows in set (0.00 sec)
 
 mysql> SELECT * FROM employee_payroll;
 +-------------+---------+--------+--------+------------+----------+---------+---------------+
-| employee_id | name    | gender | salary | start_date | phone_no | Address | Departmetment |
+| employee_id | name    | gender | salary | start_date | phone_no | Address | Department    |
 +-------------+---------+--------+--------+------------+----------+---------+---------------+
 |           1 | Anjali  | F      |  32000 | 2024-01-05 |     NULL | MUMBAI  |               |
 |           2 | Sakshi  | F      |  33000 | 2023-07-28 |     NULL | MUMBAI  |               |
@@ -353,47 +353,3 @@ mysql> SELECT * FROM employee_payroll;
 +-------------+---------+--------+--------+------------+----------+---------+---------------+
 5 rows in set (0.00 sec)
 
-
-
-
-
------------------------------------------------------------------------------------------------------------------------------
-     UC9 - Ability to extend employee payroll table to have Basic pay, Deductions, Taxable pay, Income tax, Net pay 
------------------------------------------------------------------------------------------------------------------------------
-
-
-mysql> ALTER TABLE employee_payroll ADD (Basic_pay INT,Deductions INT,Taxable_pay INT, Income_tax INT, Net_pay INT);
-Query OK, 0 rows affected (0.03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-mysql> DESCRIBE employee_payroll;
-+---------------+--------------+------+-----+---------+----------------+
-| Field         | Type         | Null | Key | Default | Extra          |
-+---------------+--------------+------+-----+---------+----------------+
-| employee_id   | int          | NO   | PRI | NULL    | auto_increment |
-| name          | varchar(255) | NO   |     | NULL    |                |
-| gender        | varchar(255) | YES  |     | NULL    |                |
-| salary        | double       | NO   |     | NULL    |                |
-| start_date    | date         | NO   |     | NULL    |                |
-| phone_no      | int          | YES  |     | NULL    |                |
-| Address       | varchar(255) | YES  |     | MUMBAI  |                |
-| Departmetment | varchar(255) | NO   |     | NULL    |                |
-| Basic_pay     | int          | YES  |     | NULL    |                |
-| Deductions    | int          | YES  |     | NULL    |                |
-| Taxable_pay   | int          | YES  |     | NULL    |                |
-| Income_tax    | int          | YES  |     | NULL    |                |
-| Net_pay       | int          | YES  |     | NULL    |                |
-+---------------+--------------+------+-----+---------+----------------+
-13 rows in set (0.01 sec)
-
-mysql> select * from employee_payroll;
-+-------------+---------+--------+--------+------------+----------+---------+---------------+-----------+------------+-------------+------------+---------+
-| employee_id | name    | gender | salary | start_date | phone_no | Address | Departmetment | Basic_pay | Deductions | Taxable_pay | Income_tax | Net_pay |
-+-------------+---------+--------+--------+------------+----------+---------+---------------+-----------+------------+-------------+------------+---------+
-|           1 | Anjali  | F      |  32000 | 2024-01-05 |     NULL | MUMBAI  |               |      NULL |       NULL |        NULL |       NULL |    NULL |
-|           2 | Sakshi  | F      |  33000 | 2023-07-28 |     NULL | MUMBAI  |               |      NULL |       NULL |        NULL |       NULL |    NULL |
-|           3 | Sanvi   | F      |  35000 | 2024-02-10 |     NULL | MUMBAI  |               |      NULL |       NULL |        NULL |       NULL |    NULL |
-|           4 | Tushar  | M      |  28000 | 2024-01-15 |     NULL | MUMBAI  |               |      NULL |       NULL |        NULL |       NULL |    NULL |
-|           5 | Swpnail | M      |  31000 | 2024-03-17 |     NULL | MUMBAI  |               |      NULL |       NULL |        NULL |       NULL |    NULL |
-+-------------+---------+--------+--------+------------+----------+---------+---------------+-----------+------------+-------------+------------+---------+
-5 rows in set (0.00 sec)
