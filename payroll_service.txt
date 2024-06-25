@@ -404,7 +404,7 @@ mysql> select * from employee_payroll;
 
 
 ---------------------------------------------------------------------------------------------------------------------------------
-      UC 10 - Ability to Complete employee payroll roll need to be Inserted Terissa as part of Sales and Marketing Department
+                                 UC 10 - Ability to Complete employee payroll need to be Inserted 
 ---------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -468,3 +468,80 @@ mysql> SELECT * FROM employee_payroll WHERE name = "Swpnail";
 |           5 | Swpnail | M      |  31000 | 2024-03-17 |     NULL | MUMBAI  | Sales      |     28000 |       1900 |        1200 |        900 |    1300 |
 +-------------+---------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
 1 row in set (0.00 sec)
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+	UC11 - Ability to create new Table called Employee Department having Employee Id and Department ID 
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+CREATE TABLE department_payroll (department_id INT NOT NULL ,
+    ->  PRIMARY KEY (department_id));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show tables;
++---------------------------+
+| Tables_in_payroll_service |
++---------------------------+
+| department_payroll        |
+| employee_payroll          |
++---------------------------+
+2 rows in set (0.03 sec)
+
+mysql>  INSERT INTO department_payroll (department_id) VALUES (101),(102),(103),(104),(105);
+Query OK, 5 rows affected (0.05 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM department_payroll;
++---------------+
+| department_id |
++---------------+
+|           101 |
+|           102 |
+|           103 |
+|           104 |
+|           105 |
++---------------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE TABLE employee_department (
+    ->     employee_id INT,
+    ->     department_id INT,
+    ->     PRIMARY KEY (employee_id, department_id),
+    ->     FOREIGN KEY (employee_id) REFERENCES employee_payroll(employee_id),
+    ->     FOREIGN KEY (department_id) REFERENCES department_payroll(department_id)
+    -> );
+Query OK, 0 rows affected (0.14 sec)
+
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (1, 101);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (2, 102);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (3, 103);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (4, 104);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (5, 105);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT * FROM employee_department;
++-------------+---------------+
+| employee_id | department_id |
++-------------+---------------+
+|           1 |           101 |
+|           2 |           102 |
+|           3 |           103 |
+|           4 |           104 |
+|           5 |           105 |
++-------------+---------------+
+5 rows in set (0.00 sec)
