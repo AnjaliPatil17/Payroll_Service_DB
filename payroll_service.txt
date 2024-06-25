@@ -497,16 +497,40 @@ mysql>  INSERT INTO department_payroll (department_id) VALUES (101),(102),(103),
 Query OK, 5 rows affected (0.05 sec)
 Records: 5  Duplicates: 0  Warnings: 0
 
+mysql> ALTER table department_payroll ADD(departement_name VARCHAR (255));
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE department_payroll SET departement_name="IT" WHERE department_id=101;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE department_payroll SET departement_name="CIVIL" WHERE department_id=102;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE department_payroll SET departement_name="ME" WHERE department_id=103;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE department_payroll SET departement_name="COM" WHERE department_id=104;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE department_payroll SET departement_name="ETC" WHERE department_id=105;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
 mysql> SELECT * FROM department_payroll;
-+---------------+
-| department_id |
-+---------------+
-|           101 |
-|           102 |
-|           103 |
-|           104 |
-|           105 |
-+---------------+
++---------------+------------------+
+| department_id | departement_name |
++---------------+------------------+
+|           101 | IT               |
+|           102 | CIVIL            |
+|           103 | ME               |
+|           104 | COM              |
+|           105 | ETC              |
++---------------+------------------+
 5 rows in set (0.00 sec)
 
 mysql> CREATE TABLE employee_department (
